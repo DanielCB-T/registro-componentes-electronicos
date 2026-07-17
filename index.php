@@ -32,40 +32,44 @@
             </div>
           
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Cantidad</label>
-                <input type="number" class="form-control" id="cantidad">
+                <label for="exampleInputEmail1" class="form-label">Unidades</label>
+                <input type="number" class="form-control" id="unidades">
             </div>
           
-           <button type="submit" class="btn btn-primary" name="btnregistro" value="ok">Enviar</button>
+           <button type="submit" class="btn btn-primary" name="btnregistro" value="ok">Registrar</button>
         </form>
 
         <div class="col-8 p-4">
-            <table class="table">
-                <thead class="bg-info">
+            <table class="table table-hover">
+                <thead class="table-dark">
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Apellidos</th>
-                        <th scope="col">DNI</th>
-                        <th scope="col">Fecha de nacimiento</th>
-                        <th scope="col">Correo</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Unidades</th>
                         <th scope="col">Accion</th>
-                        </tr>
+                    </tr>
                 </thead>
                 <tbody>
+                    <?php
+                        include "model/conexion.php";
+                        $sql=$conexion->query(" SELECT * FROM componentes ");
+                        while($datos=$sql->fetch_object()){?>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td><?= $datos -> id ?></td>
+                        <td><?= $datos -> nombre ?></td>
+                        <td><?= $datos -> tipo ?></td>
+                        <td><?= $datos -> valor ?></td>
+                        <td><?= $datos -> modelo ?></td>
+                        <td><?= $datos -> unidades ?></td>
                         <td>
                             <a href="" class="btn btn-small btn-warning p-1"><i class="fa-solid fa-pen-to-square"></i></a>
                             <a href="" class="btn btn-small btn-danger p-1"><i class="fa-solid fa-trash-can"></i></a>
                         </td>
                     </tr>
-                    
+                    <?php } ?>
                 </tbody>
             </table>
         </div>
