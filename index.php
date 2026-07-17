@@ -10,30 +10,35 @@
 <body>
     <h1 class="text-center p-5">Componentes electrónicos</h1>
     <div class="container-fluid row">
-        <form class="col-4 p-3">
-            <h3 class="text-center text-secondary ">Registro del componente</h3>
+        <form class="col-4 p-3" method="POST">
+            <h4 class="text-center alert alert-secondary ">Registro del componente</h4>
+            <?php 
+                include "model/conexion.php";
+                include "controller/registro_componentes.php";
+            ?>
+            
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Ingrese el nombre del componente</label>
-                <input type="text" class="form-control" id="nombre" >
+                <input type="text" class="form-control" name="nombre" >
             </div>
 
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Ingrese el tipo</label>
-                <input type="text" class="form-control" id="tipo">
+                <input type="text" class="form-control" name="tipo">
             </div>
           
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Ingrese el valor</label>
-                <input type="text" class="form-control" id="capacidad">
+                <input type="text" class="form-control" name="valor">
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Modelo</label>
-                <input type="text" class="form-control" id="modelo">
+                <input type="text" class="form-control" name="modelo">
             </div>
           
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Unidades</label>
-                <input type="number" class="form-control" id="unidades">
+                <input type="number" class="form-control" name="unidades">
             </div>
           
            <button type="submit" class="btn btn-primary" name="btnregistro" value="ok">Registrar</button>
@@ -55,7 +60,7 @@
                 <tbody>
                     <?php
                         include "model/conexion.php";
-                        $sql=$conexion->query(" SELECT * FROM componentes ");
+                        $sql=$conexion->query("SELECT * FROM componentes ");
                         while($datos=$sql->fetch_object()){?>
                     <tr>
                         <td><?= $datos -> id ?></td>
