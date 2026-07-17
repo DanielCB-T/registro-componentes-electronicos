@@ -70,7 +70,7 @@
                         <td><?= $datos -> modelo ?></td>
                         <td><?= $datos -> unidades ?></td>
                         <td>
-                            <a href="" class="btn btn-small btn-warning p-1"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="modificar_componente.php?id=<?= $datos -> id ?>" class="btn btn-small btn-warning p-1"><i class="fa-solid fa-pen-to-square"></i></a>
                             <a href="" class="btn btn-small btn-danger p-1"><i class="fa-solid fa-trash-can"></i></a>
                         </td>
                     </tr>
