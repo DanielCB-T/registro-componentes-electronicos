@@ -8,12 +8,23 @@
     <script src="https://kit.fontawesome.com/e05849730a.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <script>
+        function eliminar(){
+            let respuesta = confirm("Estas seguro que deseas eliminar?")
+            return respuesta;
+        }
+    </script>
+
     <h1 class="text-center p-5">Componentes electrónicos</h1>
+    <?php 
+        include "model/conexion.php";
+        include "controller/eliminar_componente.php";
+    ?>
     <div class="container-fluid row">
         <form class="col-4 p-3" method="POST">
             <h4 class="text-center alert alert-secondary ">Registro del componente</h4>
             <?php 
-                include "model/conexion.php";
+                
                 include "controller/registro_componentes.php";
             ?>
             
@@ -71,7 +82,7 @@
                         <td><?= $datos -> unidades ?></td>
                         <td>
                             <a href="modificar_componente.php?id=<?= $datos -> id ?>" class="btn btn-small btn-warning p-1"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="" class="btn btn-small btn-danger p-1"><i class="fa-solid fa-trash-can"></i></a>
+                            <a onclick="return eliminar()" href="index.php?id=<?= $datos -> id ?>" class="btn btn-small btn-danger p-1"><i class="fa-solid fa-trash-can"></i></a>
                         </td>
                     </tr>
                     <?php } ?>
